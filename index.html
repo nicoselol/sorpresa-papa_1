@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>¡Feliz Día del Padre!</title>
-
-  <!-- Fuentes y animaciones -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
   <style>
     body {
       margin: 0;
@@ -20,19 +17,16 @@
       padding: 50px 20px;
       color: #f5f5f5;
     }
-
     @keyframes gradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     .mensaje {
       font-size: 1.2em;
       color: #d0d0d0;
       margin-top: 20px;
     }
-
     .fotos {
       display: flex;
       justify-content: center;
@@ -40,7 +34,6 @@
       gap: 20px;
       margin: 30px 0;
     }
-
     .fotos img {
       width: 200px;
       height: 200px;
@@ -50,12 +43,10 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
     }
-
     .fotos img:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
-
     #pantalla-inicial {
       position: fixed;
       top: 0; left: 0;
@@ -68,7 +59,6 @@
       flex-direction: column;
       color: white;
     }
-
     button {
       padding: 12px 25px;
       font-size: 1.1em;
@@ -79,11 +69,9 @@
       border-radius: 12px;
       cursor: pointer;
     }
-
     ul {
       padding-left: 0;
     }
-
     ul li {
       list-style: none;
       margin: 10px 0;
@@ -93,43 +81,37 @@
 </head>
 <body>
 
-<!-- 🎵 Audio -->
-<audio id="musica-fondo" preload="auto">
+<!-- 🎵 Audio (sin autoplay) -->
+<audio id="musica-fondo">
   <source src="piero_mi_viejo.mp3" type="audio/mpeg" />
   Tu navegador no soporta audio HTML5.
 </audio>
 
-<!-- Pantalla de carga -->
 <div id="pantalla-inicial">
   <h1 style="font-size: 2.5em">🎉 Cargando tu sorpresa, papá...</h1>
   <p>Un momento especial está en camino...</p>
 </div>
 
-<!-- Encabezado -->
 <h1 class="animate__animated animate__fadeInDown">👨‍👧‍👦 ¡Feliz Día del Padre!</h1>
 <p id="frase-sabia" class="mensaje animate__animated animate__fadeInUp" style="font-style: italic"></p>
 <p class="mensaje animate__animated animate__fadeInUp animate__delay-1s">
   Gracias por tu amor, tus consejos y tu fuerza. Hoy celebramos a un verdadero héroe. 💙
 </p>
 
-<!-- Fotos -->
 <div class="fotos animate__animated animate__zoomIn animate__delay-2s">
   <img src="papa_1.jpg" alt="Papá 1" onclick="abrirLightbox(this.src)" />
   <img src="papa_2.jpg" alt="Papá 2" onclick="abrirLightbox(this.src)" />
 </div>
 
-<!-- Carta -->
 <div class="mensaje animate__animated animate__fadeInUp animate__delay-4s" style="margin-top: 40px">
   <h2>💌 Carta para ti, papá</h2>
   <p style="max-width: 600px; margin: auto">
     Querido papá,<br /><br />
-    Gracias por ser el mejor padre que alguien podría tener. Gracias por estar ahí en cada momento, por aguantar mis locuras y seguir apoyándome con tanto amor y paciencia.<br /><br />
-    Eres mi ejemplo, mi fuerza y mi orgullo. Te amo muchísimo y nunca voy a dejar de agradecerte por todo lo que haces por mí.<br /><br />
+    Gracias por estar ahí en cada momento, por aguantar mis locuras y seguir apoyándome con tanto amor.<br /><br />
     ¡Eres el mejor papá del universo! 💙
   </p>
 </div>
 
-<!-- Ranking -->
 <div class="mensaje animate__animated animate__fadeInUp animate__delay-5s" style="margin-top: 50px">
   <h2>🏆 Ranking del Mejor Papá del Mundo</h2>
   <ul>
@@ -140,19 +122,18 @@
   </ul>
 </div>
 
-<!-- Botón sorpresa -->
+<!-- Botón para activar sorpresa y reproducir música -->
 <button onclick="toggleSorpresa()" id="btn-sorpresa">🎁 ¡Haz clic para ver tu sorpresa!</button>
 <div id="sorpresa" class="animate__animated" style="display: none; margin-top: 30px">
   <h3 style="font-size: 1.8em">😄 ¡Sorpresa!</h3>
   <p style="font-size: 1.2em">
     ¿Sabías que papá tiene superpoderes? 💪<br />
     - Detecta travesuras a kilómetros<br />
-    - Cocina con amor (y a veces humo)<br />
-    - ¡Y da los abrazos más poderosos del mundo! 🦸‍♂️
+    - Da abrazos que recargan energía 💥<br />
+    - ¡Y cocina con amor (y a veces humo)! 🍳🔥
   </p>
 </div>
 
-<!-- JS -->
 <script>
   window.addEventListener("load", () => {
     setTimeout(() => {
@@ -176,9 +157,10 @@
   function toggleSorpresa() {
     const div = document.getElementById("sorpresa");
     const btn = document.getElementById("btn-sorpresa");
+    const musica = document.getElementById("musica-fondo");
 
     if (!visible) {
-      document.getElementById("musica-fondo").play();
+      musica.play().catch(err => console.log("🎧 Autoplay bloqueado:", err));
       div.style.display = "block";
       div.classList.remove("animate__fadeOutUp");
       div.classList.add("animate__fadeInUp");
@@ -231,7 +213,5 @@
     document.body.appendChild(overlay);
   }
 </script>
-
 </body>
 </html>
-
