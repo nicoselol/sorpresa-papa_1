@@ -93,8 +93,8 @@
 </head>
 <body>
 
-<!-- 🎵 Audio -->
-<audio id="musica-fondo" autoplay loop>
+<!-- 🎵 Audio (SIN autoplay, solo se activa con interacción) -->
+<audio id="musica-fondo" loop>
   <source src="piero_mi_viejo_convertido.mp3" type="audio/mpeg" />
   Tu navegador no soporta audio HTML5.
 </audio>
@@ -178,7 +178,11 @@
     const btn = document.getElementById("btn-sorpresa");
 
     if (!visible) {
-      document.getElementById("musica-fondo").play();
+      const musica = document.getElementById("musica-fondo");
+      musica.volume = 1;
+      musica.play().catch(() => {
+        console.warn("El navegador bloqueó el autoplay.");
+      });
       div.style.display = "block";
       div.classList.remove("animate__fadeOutUp");
       div.classList.add("animate__fadeInUp");
@@ -234,4 +238,5 @@
 
 </body>
 </html>
+
 
