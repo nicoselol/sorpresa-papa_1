@@ -80,7 +80,10 @@
       cursor: pointer;
     }
 
-    ul { padding-left: 0; }
+    ul {
+      padding-left: 0;
+    }
+
     ul li {
       list-style: none;
       margin: 10px 0;
@@ -91,7 +94,7 @@
 <body>
 
 <!-- 🎵 Audio -->
-<audio id="musica-fondo" loop>
+<audio id="musica-fondo" preload="auto">
   <source src="piero_mi_viejo.mp3" type="audio/mpeg" />
   Tu navegador no soporta audio HTML5.
 </audio>
@@ -111,8 +114,8 @@
 
 <!-- Fotos -->
 <div class="fotos animate__animated animate__zoomIn animate__delay-2s">
-  <img src="papá_1.jpg" alt="Papá 1" onclick="abrirLightbox(this.src)" />
-  <img src="papá_2.jpg" alt="Papá 2" onclick="abrirLightbox(this.src)" />
+  <img src="papa_1.jpg" alt="Papá 1" onclick="abrirLightbox(this.src)" />
+  <img src="papa_2.jpg" alt="Papá 2" onclick="abrirLightbox(this.src)" />
 </div>
 
 <!-- Carta -->
@@ -231,3 +234,4 @@
 
 </body>
 </html>
+
